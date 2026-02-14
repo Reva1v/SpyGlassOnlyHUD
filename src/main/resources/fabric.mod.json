@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "spyglass-only-hud",
+    "version": "${version}",
+    "name": "Spyglass Only HUD",
+    "description": "Hides all HUD elements (hotbar, health, crosshair, etc.) when using a spyglass, leaving only the spyglass overlay visible.",
+    "authors": [
+        "Reva1v"
+    ],
+    "contact": {
+        "sources": "https://github.com/Reva1v/SpyGlassOnlyHUD"
+    },
+    "license": "MIT",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "com.spyglasshud.SpyglassOnlyHudMod"
+        ]
+    },
+    "mixins": [
+        "spyglassonlyhud.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.16.0",
+        "minecraft": "${minecraft_version}",
+        "java": ">=21"
+    }
+}
