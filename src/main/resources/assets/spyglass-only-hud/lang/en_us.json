@@ -1,0 +1,6 @@
+{
+    "spyglass-only-hud.config.title": "Spyglass Only HUD Settings",
+    "spyglass-only-hud.config.hideHud": "Hide HUD When Scoping",
+    "spyglass-only-hud.config.overlayScale": "Overlay Scale",
+    "spyglass-only-hud.key.openConfig": "Spyglass HUD Settings"
+}

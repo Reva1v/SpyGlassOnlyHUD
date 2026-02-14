@@ -4,7 +4,9 @@
     "package": "com.spyglasshud.mixin",
     "compatibilityLevel": "JAVA_25",
     "client": [
-        "InGameHudMixin"
+        "ClientTickMixin",
+        "InGameHudMixin",
+        "KeyBindingMixin"
     ],
     "injectors": {
         "defaultRequire": 1

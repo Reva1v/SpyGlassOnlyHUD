@@ -7,6 +7,6 @@ public class SpyglassOnlyHudMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Mod uses mixins only, no runtime initialization needed
+        SpyglassConfig.load();
     }
 }
