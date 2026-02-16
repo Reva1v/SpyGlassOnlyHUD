@@ -69,7 +69,25 @@
       "Bash(\"/c/Users/Reva1v/.jdks/openjdk-25.0.2/bin/javap\" -p net/minecraft/client/KeyMapping.class)",
       "Bash(\"/c/Users/Reva1v/.jdks/openjdk-25.0.2/bin/javap\" -p net/minecraft/client/Options.class)",
       "Bash(\"/c/Users/Reva1v/.jdks/openjdk-25.0.2/bin/javap\" -p net/minecraft/client/Minecraft.class)",
-      "Bash(\"/c/Users/Reva1v/.jdks/openjdk-25.0.2/bin/javap\" -p 'net/minecraft/resources/Identifier.class')"
+      "Bash(\"/c/Users/Reva1v/.jdks/openjdk-25.0.2/bin/javap\" -p 'net/minecraft/resources/Identifier.class')",
+      "Bash(./gradlew:*)",
+      "WebFetch(domain:wiki.fabricmc.net)",
+      "WebFetch(domain:fabricmc.net)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -p /tmp/Category.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -p /tmp/KeyMapping.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -p /tmp/Identifier.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -p -c /tmp/Category.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -p -c -verbose /tmp/Category.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c /tmp/Category.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -verbose /tmp/Category2.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c /tmp/Category2.class)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p -)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.resources.Identifier\")",
+      "WebFetch(domain:jdk.java.net)",
+      "Bash(curl:*)",
+      "Bash(/c/Users/Reva1v/jdk25/jdk-25.0.2/bin/java:*)",
+      "Bash(JAVA_HOME=\"/c/Users/Reva1v/jdk25/jdk-25.0.2\" java:*)",
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.client.resources.language.ClientLanguage\")"
     ]
   }
 }

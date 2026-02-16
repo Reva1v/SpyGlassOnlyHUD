@@ -1,0 +1,7 @@
+{
+    "key.category.spyglass-only-hud.settings": "Spyglass Only HUD",
+    "spyglass-only-hud.key.openConfig": "Відкрити налаштування",
+    "spyglass-only-hud.config.title": "Налаштування Spyglass Only HUD",
+    "spyglass-only-hud.config.hideHud": "Приховувати HUD при використанні підзорної труби",
+    "spyglass-only-hud.config.overlayScale": "Масштаб накладення"
+}
