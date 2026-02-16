@@ -43,6 +43,10 @@ The keybinding category translation key is `key.category.spyglass-only-hud.setti
 
 **Important**: Fabric API (`fabric-resource-loader`) is required for language files to load from mod JARs.
 
+## Versioning
+
+When making any changes to the mod (bug fixes, new features, translation updates, etc.), **always bump the version** in `gradle.properties` (`mod_version`). Follow semantic versioning: patch for fixes/small changes (1.0.0 -> 1.0.1 -> 1.0.2), minor for new features (1.0.2 -> 1.1.0), major for breaking changes (1.1.0 -> 2.0.0).
+
 ## Key Details
 
 - **Mappings**: Mojang mappings (26.1 is unobfuscated — no Yarn/intermediary needed)
