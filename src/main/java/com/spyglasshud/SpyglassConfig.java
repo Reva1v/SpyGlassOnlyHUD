@@ -17,7 +17,7 @@ public class SpyglassConfig {
     private static SpyglassConfig instance;
 
     private boolean hideHud = true;
-    private double overlayScale = 0.85;
+    private double overlayScale = 0.90;
 
     public static SpyglassConfig get() {
         if (instance == null) {
