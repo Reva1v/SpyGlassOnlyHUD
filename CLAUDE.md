@@ -35,12 +35,37 @@ Key API differences across versions:
 ## Build Commands
 
 ```bash
-java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain build -Dorg.gradle.java.home="C:/Users/Reva1v/jdk25/jdk-25.0.2"
+java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain build -Dorg.gradle.java.home="C:/Users/Dell/.jdks/openjdk-25.0.2"
 java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain clean    # Clean build artifacts
 java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain modrinth  # Publish to Modrinth
 ```
 
-JDK 25 is installed at `C:/Users/Reva1v/jdk25/jdk-25.0.2`. Pass `-Dorg.gradle.java.home` or set `org.gradle.java.home` in `gradle.properties` to use it.
+JDK paths on this machine:
+- **JDK 25** (for branch `26.1`): `C:/Users/Dell/.jdks/openjdk-25.0.2`
+- **JDK 21** (for all `1.21.x` branches): `C:/Users/Dell/AppData/Local/Programs/IntelliJ IDEA Ultimate/jbr`
+
+## JAR Naming Convention
+
+Output JAR files must follow the format: **`spyglass-only-hud-{mod_version}-{mc_version}.jar`**
+
+Examples: `spyglass-only-hud-1.0.1-26.1.jar`, `spyglass-only-hud-1.0.2-26.2.jar`, `spyglass-only-hud-1.1.1-1.21.11.jar`
+
+To achieve this, set the archive classifier in `build.gradle`:
+```groovy
+// In build.gradle, after the existing jar {} block:
+tasks.withType(AbstractArchiveTask).configureEach {
+    archiveVersion = "${project.mod_version}-${project.minecraft_version}"
+}
+```
+
+Or for remapped projects (1.21.x), override on the `remapJar` task:
+```groovy
+remapJar {
+    archiveVersion = "${project.mod_version}-${project.minecraft_version}"
+}
+```
+
+When writing build/copy scripts, always look for `spyglass-only-hud-${mod_version}-${mc_version}.jar` in `build/libs/` and name Desktop folders as `${mod_version}-${mc_version}` (e.g. `1.0.1-26.1`).
 
 There are no automated tests; manual testing is done via `runClient` by equipping and using a spyglass in-game.
 
