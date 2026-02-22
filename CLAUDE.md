@@ -40,9 +40,13 @@ java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain 
 java -cp gradle/wrapper/gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain modrinth  # Publish to Modrinth
 ```
 
-JDK paths on this machine:
+JDK paths — **laptop (Dell)**:
 - **JDK 25** (for branch `26.1`): `C:/Users/Dell/.jdks/openjdk-25.0.2`
 - **JDK 21** (for all `1.21.x` branches): `C:/Users/Dell/AppData/Local/Programs/IntelliJ IDEA Ultimate/jbr`
+
+JDK paths — **desktop (Reva1v)**:
+- **JDK 25** (for branch `26.1`): `C:/Users/Reva1v/jdk25/jdk-25.0.2`
+- **JDK 21** (for all `1.21.x` branches): check `C:/Users/Reva1v/AppData/Local/Programs/IntelliJ IDEA Ultimate/jbr`
 
 ## JAR Naming Convention
 
