@@ -14,8 +14,12 @@ public class ClientTickMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTick(CallbackInfo ci) {
         Minecraft client = (Minecraft) (Object) this;
-        if (client.screen == null && SpyglassKeyBinding.OPEN_CONFIG.consumeClick()) {
-            client.setScreen(new SpyglassConfigScreen(null));
+        if (SpyglassKeyBinding.OPEN_CONFIG.consumeClick()) {
+            if (client.screen instanceof SpyglassConfigScreen) {
+                client.setScreen(null);
+            } else if (client.screen == null) {
+                client.setScreen(new SpyglassConfigScreen(null));
+            }
         }
     }
 }
