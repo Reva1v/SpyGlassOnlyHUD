@@ -87,7 +87,28 @@
       "Bash(curl:*)",
       "Bash(/c/Users/Reva1v/jdk25/jdk-25.0.2/bin/java:*)",
       "Bash(JAVA_HOME=\"/c/Users/Reva1v/jdk25/jdk-25.0.2\" java:*)",
-      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.client.resources.language.ClientLanguage\")"
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.client.resources.language.ClientLanguage\")",
+      "WebFetch(domain:docs.neoforged.net)",
+      "Bash(git checkout:*)",
+      "WebFetch(domain:piston-meta.mojang.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo edit:*)",
+      "Bash(gh.exe repo edit:*)",
+      "Bash(git remote get-url:*)",
+      "WebFetch(domain:minecraft.wiki)",
+      "WebFetch(domain:modrinth.com)",
+      "Bash(find \"E:/IdeaProject/SpyGlassOnlyHUD\" -path \"*/net/minecraft/client/gui/Gui.java\" 2>/dev/null | head -5)",
+      "Bash(find /c/Users/Reva1v/.gradle -path \"*/net/minecraft*\" -name \"*.jar\" 2>/dev/null | grep -i \"26.1\" | head -10)",
+      "Bash(find /c/Users/Reva1v/.gradle -name \"*26.1*\" -name \"*.jar\" 2>/dev/null | head -10)",
+      "Bash(mkdir -p /tmp/mc-analysis)",
+      "Read(//tmp/mc-analysis/**)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" tf:*)",
+      "Bash(curl -sL -o /tmp/mc-analysis/client-26.1-pre1.jar \"https://piston-data.mojang.com/v1/objects/a623b4ac667739eb36956494a3e7ce98ff4da095/client.jar\" && cd /tmp/mc-analysis && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-pre1.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"render|extract\" | head -40)",
+      "Bash(curl -sL -o /tmp/mc-analysis/client-26.1-snap11.jar \"https://piston-data.mojang.com/v1/objects/632526298395b8483b608e9488d4787bfed9e3f6/client.jar\" && cd /tmp/mc-analysis && rm -f net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-snap11.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"render|extract\" | head -40)",
+      "Bash(cd /tmp/mc-analysis && rm -f net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-pre2.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"\\(extractCameraOverlays|extractSpyglassOverlay|extractCrosshair|extractHotbarAndDecorations|extractPlayerHealth|extractVehicleHealth|extractEffects|extractSelectedItemName\\)\")"
     ]
   }
 }
