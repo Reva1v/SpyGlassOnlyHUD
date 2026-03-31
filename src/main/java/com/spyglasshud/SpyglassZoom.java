@@ -6,8 +6,8 @@ public class SpyglassZoom {
     public static final double DEFAULT_ZOOM = 10.0;
     private static final double STEP = 1.0;
 
-    private static double currentZoom = DEFAULT_ZOOM;
-    private static boolean wasScoping = false;
+    private static volatile double currentZoom = DEFAULT_ZOOM;
+    private static volatile boolean wasScoping = false;
 
     public static double get() {
         return currentZoom;
