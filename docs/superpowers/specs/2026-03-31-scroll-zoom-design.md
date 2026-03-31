@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-31
 **Branch:** feature/scroll-zoom (to be created from `26.1`)
-**Minecraft version:** 26.1-pre-2 (unobfuscated)
+**Minecraft version:** 26.1 (unobfuscated)
 
 ---
 
