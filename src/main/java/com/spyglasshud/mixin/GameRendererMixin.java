@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
 
+    // getFov() already applies vanilla ×10 spyglass zoom. Rescale relative to that
+    // baseline: multiplier = 10.0 / currentZoom, so DEFAULT_ZOOM (10) = no change.
     @Inject(method = "getFov", at = @At("RETURN"), cancellable = true)
     private void modifySpyglassFov(Camera camera, float partialTick, boolean useFovSetting,
                                     CallbackInfoReturnable<Float> cir) {
