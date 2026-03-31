@@ -18,7 +18,7 @@ public class GameRendererMixin {
         Minecraft client = Minecraft.getInstance();
         if (client.player != null && client.player.isScoping() && client.screen == null) {
             float fov = cir.getReturnValue();
-            cir.setReturnValue(fov * (float) (10.0 / SpyglassZoom.get()));
+            cir.setReturnValue(fov * (float) (10.0 / SpyglassZoom.get(partialTick)));
         }
     }
 }
