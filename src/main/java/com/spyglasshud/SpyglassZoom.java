@@ -2,7 +2,7 @@ package com.spyglasshud;
 
 public class SpyglassZoom {
     public static final double MIN_ZOOM = 1.0;
-    public static final double MAX_ZOOM = 20.0;
+    public static final double MAX_ZOOM = 25.0;
     public static final double DEFAULT_ZOOM = 10.0;
     private static final double STEP = 1.0;
     // Fraction of the gap closed per tick (20 ticks/s). 0.3 → ~97% after 10 ticks (0.5s).
