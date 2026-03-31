@@ -2,11 +2,11 @@ package com.spyglasshud;
 
 public class SpyglassZoom {
     public static final double MIN_ZOOM = 1.0;
-    public static final double MAX_ZOOM = 25.0;
+    public static final double MAX_ZOOM = 30.0;
     public static final double DEFAULT_ZOOM = 10.0;
     private static final double STEP = 1.0;
-    // Fraction of the gap closed per tick (20 ticks/s). 0.3 → ~97% after 10 ticks (0.5s).
-    private static final double LERP_FACTOR = 0.3;
+    // Fixed zoom units moved per tick (20 ticks/s). 1.5 → 30 units/s, constant speed regardless of distance.
+    private static final double ZOOM_SPEED = 1.5;
 
     private static volatile double targetZoom = DEFAULT_ZOOM;
     private static volatile double prevZoom = DEFAULT_ZOOM;    // snapshot at tick start, for partial-tick lerp
@@ -42,7 +42,12 @@ public class SpyglassZoom {
         wasScoping = isScoping;
         if (isScoping) {
             prevZoom = currentZoom;
-            currentZoom += (targetZoom - currentZoom) * LERP_FACTOR;
+            double diff = targetZoom - currentZoom;
+            if (Math.abs(diff) <= ZOOM_SPEED) {
+                currentZoom = targetZoom;
+            } else {
+                currentZoom += Math.signum(diff) * ZOOM_SPEED;
+            }
         }
     }
 }
