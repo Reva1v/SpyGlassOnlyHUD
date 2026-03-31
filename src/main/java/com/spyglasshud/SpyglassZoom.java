@@ -4,7 +4,7 @@ public class SpyglassZoom {
     public static final double MIN_ZOOM = 2.0;
     public static final double MAX_ZOOM = 15.0;
     public static final double DEFAULT_ZOOM = 10.0;
-    public static final double STEP = 1.0;
+    private static final double STEP = 1.0;
 
     private static double currentZoom = DEFAULT_ZOOM;
     private static boolean wasScoping = false;
