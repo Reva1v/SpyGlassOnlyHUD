@@ -47,13 +47,23 @@ jar {
     }
 }
 
+remapJar {
+    archiveVersion = "${project.mod_version}-${project.minecraft_version}"
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    if (name == "sourcesJar") {
+        archiveVersion = "${project.mod_version}-${project.minecraft_version}"
+    }
+}
+
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = project.modrinth_project_id
     versionNumber = project.mod_version
     versionName = "Spyglass Only HUD ${project.mod_version}"
     versionType = "release"
-    uploadFile = file("build/libs/${project.archives_base_name}-${project.mod_version}.jar")
+    uploadFile = file("build/libs/${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}.jar")
     gameVersions = [project.minecraft_version]
     loaders = ["fabric"]
 }
