@@ -5,8 +5,10 @@
     "compatibilityLevel": "JAVA_21",
     "client": [
         "ClientTickMixin",
+        "GameRendererMixin",
         "InGameHudMixin",
-        "KeyBindingMixin"
+        "KeyBindingMixin",
+        "MouseHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
