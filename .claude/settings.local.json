@@ -87,7 +87,9 @@
       "Bash(curl:*)",
       "Bash(/c/Users/Reva1v/jdk25/jdk-25.0.2/bin/java:*)",
       "Bash(JAVA_HOME=\"/c/Users/Reva1v/jdk25/jdk-25.0.2\" java:*)",
-      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.client.resources.language.ClientLanguage\")"
+      "Bash(\"/c/Program Files/Java/jdk-21/bin/javap\" -c -p \"net.minecraft.client.resources.language.ClientLanguage\")",
+      "Bash(cp \"/c/Users/Reva1v/AppData/Local/Temp/zoom_files/\"* /tmp/zoom_files/)",
+      "Bash(chmod +x /tmp/apply_zoom.sh)"
     ]
   }
 }
