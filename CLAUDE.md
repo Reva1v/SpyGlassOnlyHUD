@@ -52,7 +52,7 @@ Mixin-based, client-only:
 - **`SpyglassOnlyHudMod`** — `ClientModInitializer` entry point; loads config.
 - **`InGameHudMixin`** — Cancels rendering of crosshair, hotbar, health/hunger/armor/XP, mount health, status effects, held item tooltip while scoping. Also `@ModifyArg` for overlay scale.
 - **`SpyglassZoom`** — Scroll zoom state: range ×1–×50, default ×10, step 3.0/scroll; resets on unscope.
-- **`GameRendererMixin`** — Injects into `Camera.calculateFov(float)` RETURN; applies `fov * (10.0 / currentZoom)`.
+- **`GameRendererMixin`** — Applies `fov * (10.0 / currentZoom)`. Target differs: `26.1` uses `Camera.calculateFov(float)` RETURN; `1.21.x` uses `GameRenderer.getFov(Camera, float, boolean)` RETURN. Note: Loom doesn't catch wrong target at compile time — only fails at runtime.
 - **`MouseHandlerMixin`** — Intercepts `MouseHandler.onScroll()`; while scoping cancels event and calls `SpyglassZoom.adjust(yDelta)`.
 - **`ClientTickMixin`** — Calls `SpyglassZoom.onTick()` each tick; handles K keybinding to open config screen.
 - **`KeyBindingMixin`** — Injects into `Options.<init>` to register the custom keybinding.
