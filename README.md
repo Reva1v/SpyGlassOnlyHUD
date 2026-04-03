@@ -11,6 +11,7 @@ A client-side [Fabric](https://fabricmc.net/) mod for Minecraft that hides all H
 ## Features
 
 - **Full HUD suppression** while scoping — hides crosshair, hotbar, health/hunger/armor bars, mount health, status effects, and held item tooltip
+- **Scroll zoom** — scroll the mouse wheel while scoping to zoom in/out (×1–×50, default ×10); resets when you stop scoping
 - **Adjustable overlay scale** — resize the spyglass overlay via an in-game slider (default 90%)
 - **Toggle on/off** — quickly enable or disable the mod without restarting
 - **In-game settings screen** — press **K** (configurable) to open settings, or access via [Mod Menu](https://modrinth.com/mod/modmenu)
@@ -27,8 +28,9 @@ A client-side [Fabric](https://fabricmc.net/) mod for Minecraft that hides all H
 ## Usage
 
 1. Equip and use a spyglass — the HUD will automatically hide
-2. Press **K** to open the settings screen (rebindable in Controls)
-3. Adjust the overlay scale or toggle the mod on/off
+2. Scroll the mouse wheel to zoom in or out while scoping
+3. Press **K** to open the settings screen (rebindable in Controls)
+4. Adjust the overlay scale or toggle the mod on/off
 
 ## Building from Source
 
