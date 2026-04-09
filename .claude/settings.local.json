@@ -108,7 +108,22 @@
       "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" tf:*)",
       "Bash(curl -sL -o /tmp/mc-analysis/client-26.1-pre1.jar \"https://piston-data.mojang.com/v1/objects/a623b4ac667739eb36956494a3e7ce98ff4da095/client.jar\" && cd /tmp/mc-analysis && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-pre1.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"render|extract\" | head -40)",
       "Bash(curl -sL -o /tmp/mc-analysis/client-26.1-snap11.jar \"https://piston-data.mojang.com/v1/objects/632526298395b8483b608e9488d4787bfed9e3f6/client.jar\" && cd /tmp/mc-analysis && rm -f net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-snap11.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"render|extract\" | head -40)",
-      "Bash(cd /tmp/mc-analysis && rm -f net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-pre2.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"\\(extractCameraOverlays|extractSpyglassOverlay|extractCrosshair|extractHotbarAndDecorations|extractPlayerHealth|extractVehicleHealth|extractEffects|extractSelectedItemName\\)\")"
+      "Bash(cd /tmp/mc-analysis && rm -f net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar\" xf client-26.1-pre2.jar net/minecraft/client/gui/Gui.class && \"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap\" -p net/minecraft/client/gui/Gui.class 2>&1 | grep -E \"\\(extractCameraOverlays|extractSpyglassOverlay|extractCrosshair|extractHotbarAndDecorations|extractPlayerHealth|extractVehicleHealth|extractEffects|extractSelectedItemName\\)\")",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" log --oneline -3)",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" show 26.1:src/main/resources/assets/spyglass-only-hud/icon.png)",
+      "Bash(cp /tmp/icon.png \"E:/IdeaProject/SpyGlassOnlyHUD/src/main/resources/assets/spyglass-only-hud/icon.png\")",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" add src/main/resources/assets/spyglass-only-hud/icon.png)",
+      "Bash(git -C E:/IdeaProject/SpyGlassOnlyHUD commit -m ':*)",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" push origin 26.1.1)",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" checkout 26.1)",
+      "Bash(git -C \"E:/IdeaProject/SpyGlassOnlyHUD\" stash pop)",
+      "Bash(git:*)",
+      "Bash(wc -l src/main/java/com/spyglasshud/*.java src/main/java/com/spyglasshud/mixin/*.java)",
+      "Read(//c/Users/Reva1v/AppData/Local/Temp/**)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar.exe\" xf:*)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/Minecraft.class)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -verbose net/minecraft/client/Minecraft.class)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/gui/Gui.class)"
     ]
   }
 }

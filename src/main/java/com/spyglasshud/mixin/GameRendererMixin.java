@@ -16,7 +16,7 @@ public class GameRendererMixin {
     @Inject(method = "calculateFov", at = @At("RETURN"), cancellable = true)
     private void modifySpyglassFov(float partialTick, CallbackInfoReturnable<Float> cir) {
         Minecraft client = Minecraft.getInstance();
-        if (client.player != null && client.player.isScoping() && client.screen == null) {
+        if (client.player != null && client.player.isScoping() && client.gui.screen() == null) {
             float fov = cir.getReturnValue();
             cir.setReturnValue(fov * (float) (10.0 / SpyglassZoom.get(partialTick)));
         }

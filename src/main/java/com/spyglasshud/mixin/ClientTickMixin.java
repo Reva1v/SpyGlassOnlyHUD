@@ -18,10 +18,10 @@ public class ClientTickMixin {
         boolean isScoping = client.player != null && client.player.isScoping();
         SpyglassZoom.onTick(isScoping);
         if (SpyglassKeyBinding.OPEN_CONFIG.consumeClick()) {
-            if (client.screen instanceof SpyglassConfigScreen) {
-                client.setScreen(null);
-            } else if (client.screen == null) {
-                client.setScreen(new SpyglassConfigScreen(null));
+            if (client.gui.screen() instanceof SpyglassConfigScreen) {
+                client.gui.setScreen(null);
+            } else if (client.gui.screen() == null) {
+                client.gui.setScreen(new SpyglassConfigScreen(null));
             }
         }
     }
