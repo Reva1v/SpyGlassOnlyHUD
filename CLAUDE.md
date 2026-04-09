@@ -6,6 +6,7 @@ Spyglass Only HUD — client-side Fabric mod that hides all HUD elements while u
 
 | Branch | Minecraft | Fabric API | Java | `KeyMapping` category | ID class |
 |---|---|---|---|---|---|
+| `26.1.2` | 26.1.2 | 0.145.4+26.1.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.1` | 26.1 | 0.145.0+26.1 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `1.21.11` | 1.21.11 | 0.141.1+1.21.11 | 21 | `KeyMapping.Category.register()` | `Identifier` |
 | `1.21.10` | 1.21.10 | 0.138.4+1.21.10 | 21 | `KeyMapping.Category.register()` | `ResourceLocation` |
