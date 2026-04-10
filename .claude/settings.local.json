@@ -120,10 +120,14 @@
       "Bash(git:*)",
       "Bash(wc -l src/main/java/com/spyglasshud/*.java src/main/java/com/spyglasshud/mixin/*.java)",
       "Read(//c/Users/Reva1v/AppData/Local/Temp/**)",
+      "Read(//tmp/**)",
       "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/jar.exe\" xf:*)",
       "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/Minecraft.class)",
       "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -verbose net/minecraft/client/Minecraft.class)",
-      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/gui/Gui.class)"
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/gui/Gui.class)",
+      "Bash(JAVA_HOME=\"C:/Users/Reva1v/jdk25/jdk-25.0.2\" ./gradlew build -Dorg.gradle.java.home=\"C:/Users/Reva1v/jdk25/jdk-25.0.2\")",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/renderer/state/gui/GuiRenderState.class)",
+      "Bash(\"C:/Users/Reva1v/jdk25/jdk-25.0.2/bin/javap.exe\" -p net/minecraft/client/gui/Hud.class)"
     ]
   }
 }

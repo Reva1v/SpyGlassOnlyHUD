@@ -6,7 +6,7 @@ Spyglass Only HUD — client-side Fabric mod that hides all HUD elements while u
 
 | Branch | Minecraft | Fabric API | Java | `KeyMapping` category | ID class |
 |---|---|---|---|---|---|
-| `26.2-snapshot` | 26.2-snapshot-1 | 0.145.5+26.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
+| `26.2-snapshot` | 26.2-snapshot-2 | 0.145.5+26.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.1.2` | 26.1.2 | 0.145.4+26.1.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.1` | 26.1 | 0.145.0+26.1 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `1.21.11` | 1.21.11 | 0.141.1+1.21.11 | 21 | `KeyMapping.Category.register()` | `Identifier` |
@@ -27,6 +27,7 @@ Key API differences:
 - **`Identifier`** replaced `ResourceLocation` in 1.21.11.
 - **26.1+**: unobfuscated, `net.fabricmc.fabric-loom`, `implementation` deps.
 - **1.21.x**: obfuscated, `net.fabricmc.fabric-loom-remap`, Mojang mappings (`loom.officialMojangMappings()`), `modImplementation` deps.
+- **26.2-snapshot+**: `InGameHudMixin` targets `Hud` (not `Gui`) — all `extract*` methods moved there. Method signatures now include `GuiGraphicsExtractor` (and `DeltaTracker` where applicable) as parameters before `CallbackInfo`. `@ModifyArg` target updated to `Hud;extractSpyglassOverlay`. Requires loom `1.16-SNAPSHOT` and Gradle `9.4.0+`. `fabric.mod.json` minecraft constraint uses range `>=26.2-alpha.1 <26.3-` (game reports itself as `26.2-alpha.X`).
 
 ## Build Commands
 
@@ -52,7 +53,7 @@ Achieved via `archiveVersion = "${mod_version}-${minecraft_version}"` in `build.
 Mixin-based, client-only:
 
 - **`SpyglassOnlyHudMod`** — `ClientModInitializer` entry point; loads config.
-- **`InGameHudMixin`** — Cancels rendering of crosshair, hotbar, health/hunger/armor/XP, mount health, status effects, held item tooltip while scoping. Also `@ModifyArg` for overlay scale.
+- **`InGameHudMixin`** — Cancels rendering of crosshair, hotbar, health/hunger/armor/XP, mount health, status effects, held item tooltip while scoping. Also `@ModifyArg` for overlay scale. Target class: `Gui` on 26.1.x and earlier; `Hud` on 26.2-snapshot+.
 - **`SpyglassZoom`** — Scroll zoom state: range ×1–×50, default ×10, step 3.0/scroll; resets on unscope.
 - **`GameRendererMixin`** — Applies `fov * (10.0 / currentZoom)`. Target differs: `26.1` uses `Camera.calculateFov(float)` RETURN; `1.21.x` uses `GameRenderer.getFov(Camera, float, boolean)` RETURN. Note: Loom doesn't catch wrong target at compile time — only fails at runtime.
 - **`MouseHandlerMixin`** — Intercepts `MouseHandler.onScroll()`; while scoping cancels event and calls `SpyglassZoom.adjust(yDelta)`.
@@ -72,7 +73,9 @@ Always bump `mod_version` in `gradle.properties`. Semver: patch = fixes, minor =
 ## Porting to a New Minecraft Version
 
 1. Branch from the closest existing version.
-2. Update `gradle.properties`: `minecraft_version`, `fabric_version`, `mod_version`.
-3. Update `fabric.mod.json`: `"minecraft": "~X.XX.X"`.
-4. Check `SpyglassKeyBinding.java` for API differences (see table).
-5. Build and fix compilation errors, then commit and push.
+2. Update `gradle.properties`: `minecraft_version`, `loader_version`, `fabric_version`, `mod_version`.
+3. Update `build.gradle`: loom version if needed (loom `1.16-SNAPSHOT` requires Gradle `9.4.0+` → also update `gradle-wrapper.properties`).
+4. Update `fabric.mod.json`: `"minecraft"` constraint. For snapshot versions use a range (`>=26.2-alpha.1 <26.3-`) since the game may report a different version string at runtime than the Maven artifact name.
+5. Check `SpyglassKeyBinding.java` for API differences (see table).
+6. Check `InGameHudMixin.java`: if `extract*` methods moved to a different class (e.g. `Gui` → `Hud` in 26.2), update `@Mixin` target and method parameter signatures.
+7. Build and fix compilation errors, then commit and push.
