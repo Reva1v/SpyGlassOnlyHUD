@@ -21,7 +21,7 @@ public abstract class InGameHudMixin {
     }
 
     // --- Reduce spyglass overlay scale so the scope border fits on screen ---
-    @ModifyArg(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;renderSpyglassOverlay(Lnet/minecraft/client/gui/GuiGraphics;F)V"), index = 1)
+    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;renderSpyglassOverlay(Lnet/minecraft/client/gui/GuiGraphics;F)V"), index = 1)
     private float adjustSpyglassScale(float scopeScale) {
         return scopeScale * (float) SpyglassConfig.get().getOverlayScale();
     }
@@ -35,7 +35,7 @@ public abstract class InGameHudMixin {
     }
 
     // --- Hide hotbar when using spyglass ---
-    @Inject(method = "renderHotbarAndDecorations", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "renderHotbar", at = @At("HEAD"), cancellable = true)
     private void hideHotbar(CallbackInfo ci) {
         if (shouldHideHud()) {
             ci.cancel();

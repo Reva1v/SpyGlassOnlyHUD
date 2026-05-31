@@ -14,7 +14,7 @@ public class SpyglassZoom {
     }
 
     public static void adjust(double delta) {
-        currentZoom = Math.clamp(currentZoom + Math.signum(delta) * STEP, MIN_ZOOM, MAX_ZOOM);
+        currentZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, currentZoom + Math.signum(delta) * STEP));
     }
 
     public static void onTick(boolean isScoping) {
