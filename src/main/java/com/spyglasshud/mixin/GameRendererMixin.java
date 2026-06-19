@@ -1,5 +1,6 @@
 package com.spyglasshud.mixin;
 
+import com.spyglasshud.SpyglassConfig;
 import com.spyglasshud.SpyglassZoom;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,8 @@ public class GameRendererMixin {
     @Inject(method = "calculateFov", at = @At("RETURN"), cancellable = true)
     private void modifySpyglassFov(float partialTick, CallbackInfoReturnable<Float> cir) {
         Minecraft client = Minecraft.getInstance();
-        if (client.player != null && client.player.isScoping() && client.screen == null) {
+        if (client.player != null && client.player.isScoping() && client.screen == null
+                && SpyglassConfig.get().isZoomEnabled()) {
             float fov = cir.getReturnValue();
             cir.setReturnValue(fov * (float) (10.0 / SpyglassZoom.get(partialTick)));
         }
