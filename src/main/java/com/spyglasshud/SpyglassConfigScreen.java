@@ -13,6 +13,9 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
 
     private OptionInstance<Boolean> hideHudOption;
     private OptionInstance<Double> overlayScaleOption;
+    private OptionInstance<Boolean> zoomEnabledOption;
+    private OptionInstance<Double> zoomSensitivityOption;
+    private OptionInstance<Double> zoomSmoothnessOption;
 
     public SpyglassConfigScreen(Screen parent) {
         super(parent, Minecraft.getInstance().options, TITLE);
@@ -41,8 +44,42 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
                 value -> {}
         );
 
+        zoomEnabledOption = OptionInstance.createBoolean(
+                "spyglass-only-hud.config.zoomEnabled",
+                config.isZoomEnabled()
+        );
+
+        zoomSensitivityOption = new OptionInstance<>(
+                "spyglass-only-hud.config.zoomSensitivity",
+                OptionInstance.noTooltip(),
+                (caption, value) -> {
+                    double actual = 1.0 + value * 9.0; // map 0.0-1.0 to 1.0-10.0
+                    return Component.translatable("spyglass-only-hud.config.zoomSensitivity")
+                            .append(": " + String.format("%.1f", actual));
+                },
+                OptionInstance.UnitDouble.INSTANCE,
+                Codec.doubleRange(0.0, 1.0),
+                (config.getZoomSensitivity() - 1.0) / 9.0, // map 1.0-10.0 to 0.0-1.0
+                value -> {}
+        );
+
+        zoomSmoothnessOption = new OptionInstance<>(
+                "spyglass-only-hud.config.zoomSmoothness",
+                OptionInstance.noTooltip(),
+                (caption, value) ->
+                        Component.translatable("spyglass-only-hud.config.zoomSmoothness")
+                                .append(": " + Math.round(value * 100) + "%"),
+                OptionInstance.UnitDouble.INSTANCE,
+                Codec.doubleRange(0.0, 1.0),
+                (1.0 - config.getZoomSmoothness()) / 0.95, // factor -> slider (higher = smoother)
+                value -> {}
+        );
+
         this.list.addBig(hideHudOption);
         this.list.addBig(overlayScaleOption);
+        this.list.addBig(zoomEnabledOption);
+        this.list.addBig(zoomSensitivityOption);
+        this.list.addBig(zoomSmoothnessOption);
     }
 
     @Override
@@ -50,6 +87,9 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
         SpyglassConfig config = SpyglassConfig.get();
         config.setHideHud(hideHudOption.get());
         config.setOverlayScale(0.5 + overlayScaleOption.get() * 0.7);
+        config.setZoomEnabled(zoomEnabledOption.get());
+        config.setZoomSensitivity(1.0 + zoomSensitivityOption.get() * 9.0);
+        config.setZoomSmoothness(1.0 - zoomSmoothnessOption.get() * 0.95);
         SpyglassConfig.save();
         super.removed();
     }
