@@ -35,7 +35,7 @@ Key API differences:
 ```
 
 JDK paths (Reva1v desktop):
-- **JDK 25** (`26.1` branch): `C:/Users/Reva1v/jdk25/jdk-25.0.2`
+- **JDK 25** (`26.1`/`26.2` branches): `C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot` (also available: `C:/Users/Reva1v/.jdks/ms-25.0.2`)
 - **JDK 21** (`1.21.x` branches): `C:/Users/Reva1v/AppData/Local/Programs/IntelliJ IDEA/jbr`
 
 Testing: no automated tests — use `./gradlew runClient` and test in-game with a spyglass.

@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-05-31T13:30:28.686Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/main/resources/fabric.mod.json",
+      "root_cause": "Had \"~1.21\"",
+      "fix": "Changed to \"~1.20.1\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-31T13:30:28.686Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-05-31T13:30:37.013Z",
+      "error_message": "Wrong reference: options should be OptionsSubScreen",
+      "file": "src/main/java/com/spyglasshud/SpyglassConfigScreen.java",
+      "root_cause": "Used \"options\" instead of \"OptionsSubScreen\"",
+      "fix": "Changed options → OptionsSubScreen",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-31T13:30:37.013Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-05-31T13:30:46.574Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/main/java/com/spyglasshud/mixin/InGameHudMixin.java",
+      "root_cause": "Had \"renderHotbarAndDecorations\"",
+      "fix": "Changed to \"renderHotbar\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-31T13:30:46.574Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-05-31T13:39:31.557Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/main/java/com/spyglasshud/mixin/InGameHudMixin.java",
+      "root_cause": "Had \"renderCameraOverlays\"",
+      "fix": "Changed to \"renderOverlays\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-05-31T13:42:23.925Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-05-31T14:06:43.328Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/main/resources/spyglassonlyhud.mixins.json",
+      "root_cause": "Had \"JAVA_21\"",
+      "fix": "Changed to \"JAVA_17\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-31T14:06:43.328Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-06-15T19:37:38.205Z",
+      "error_message": "Significant refactor of ",
+      "file": "C:/Users/Reva1v/.claude/skills/test-mod-versions/tests/test_testmod.py",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 6→34 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "py"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-15T19:37:38.205Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-06-15T19:43:41.745Z",
+      "error_message": "Significant refactor of ",
+      "file": "C:/Users/Reva1v/.claude/skills/test-mod-versions/SKILL.md",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 3→6 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "md"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-15T19:43:41.745Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-06-15T19:44:52.337Z",
+      "error_message": "Incorrect value in code",
+      "file": "../smoh-test-26.2-snapshot-2/src/main/resources/fabric.mod.json",
+      "root_cause": "Had \"spyglass-only-hud\"",
+      "fix": "Changed to \"spyglasshud_devhost\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-15T19:44:52.337Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-06-15T20:08:55.753Z",
+      "error_message": "Significant refactor of ",
+      "file": "C:/Users/Reva1v/.claude/skills/test-mod-versions/assets/companion/SpyglassAutopilot.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 3→7 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-15T20:08:55.753Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-06-15T20:12:43.435Z",
+      "error_message": "Significant refactor of ",
+      "file": "C:/Users/Reva1v/.claude/skills/test-mod-versions/SKILL.md",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 3→6 lines (3 removed) | Also: When the user asks to auto-enter a world and hold ; the normal procedure, per worktree:",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "md"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-06-15T20:17:41.162Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-06-15T20:12:57.679Z",
+      "error_message": "Incorrect value in code",
+      "file": "C:/Users/Reva1v/.claude/skills/test-mod-versions/SKILL.md",
+      "root_cause": "Had `<mc>`",
+      "fix": "Changed to `git -C <project> worktree prune`",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "md"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-15T20:12:57.679Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-06-19T00:00:00.000Z",
+      "error_message": "Value 'C:/Users/Reva1v/jdk25/jdk-25.0.2' given for org.gradle.java.home Gradle property is invalid (Java home supplied is invalid)",
+      "file": "CLAUDE.md",
+      "root_cause": "CLAUDE.md documents the JDK 25 path as C:/Users/Reva1v/jdk25/jdk-25.0.2, but that directory no longer exists on the machine.",
+      "fix": "Use C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot (or C:/Users/Reva1v/.jdks/ms-25.0.2) as the JDK 25 home for the 26.1 branch build.",
+      "tags": [
+        "build",
+        "jdk",
+        "wrong-path",
+        "gradle"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T00:00:00.000Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-06-19T12:34:43.855Z",
+      "error_message": "Incorrect value in code",
+      "file": "CLAUDE.md",
+      "root_cause": "Had `C:/Users/Reva1v/jdk25/jdk-25.0.2`",
+      "fix": "Changed to `26.2`",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "md"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T12:34:43.855Z"
+    }
+  ]
+}
