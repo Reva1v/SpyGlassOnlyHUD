@@ -3,5 +3,8 @@
     "spyglass-only-hud.key.openConfig": "Открыть настройки",
     "spyglass-only-hud.config.title": "Настройки Spyglass Only HUD",
     "spyglass-only-hud.config.hideHud": "Скрывать HUD при использовании подзорной трубы",
-    "spyglass-only-hud.config.overlayScale": "Масштаб наложения"
+    "spyglass-only-hud.config.overlayScale": "Масштаб наложения",
+    "spyglass-only-hud.config.zoomEnabled": "Зум колёсиком",
+    "spyglass-only-hud.config.zoomSensitivity": "Чувствительность зума",
+    "spyglass-only-hud.config.zoomSmoothness": "Плавность зума"
 }
