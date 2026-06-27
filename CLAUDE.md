@@ -4,30 +4,7 @@ Spyglass Only HUD — client-side Fabric mod that hides all HUD elements while u
 
 ## Multi-Version Support
 
-| Branch | Minecraft | Fabric API | Java | `KeyMapping` category | ID class |
-|---|---|---|---|---|---|
-| `26.2-snapshot` | 26.2-snapshot-2 | 0.145.5+26.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
-| `26.1.2` | 26.1.2 | 0.145.4+26.1.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
-| `26.1` | 26.1 | 0.145.0+26.1 | 25 | `KeyMapping.Category.register()` | `Identifier` |
-| `1.21.11` | 1.21.11 | 0.141.1+1.21.11 | 21 | `KeyMapping.Category.register()` | `Identifier` |
-| `1.21.10` | 1.21.10 | 0.138.4+1.21.10 | 21 | `KeyMapping.Category.register()` | `ResourceLocation` |
-| `1.21.9` | 1.21.9 | 0.134.0+1.21.9 | 21 | `KeyMapping.Category.register()` | `ResourceLocation` |
-| `1.21.8` | 1.21.8 | 0.136.0+1.21.8 | 21 | String category | `ResourceLocation` |
-| `1.21.7` | 1.21.7 | 0.129.0+1.21.7 | 21 | String category | `ResourceLocation` |
-| `1.21.6` | 1.21.6 | 0.128.1+1.21.6 | 21 | String category | `ResourceLocation` |
-| `1.21.5` | 1.21.5 | 0.122.0+1.21.5 | 21 | String category | `ResourceLocation` |
-| `1.21.4` | 1.21.4 | 0.119.2+1.21.4 | 21 | String category | `ResourceLocation` |
-| `1.21.3` | 1.21.3 | 0.108.0+1.21.3 | 21 | String category | `ResourceLocation` |
-| `1.21.2` | 1.21.2 | 0.106.1+1.21.2 | 21 | String category | `ResourceLocation` |
-| `1.21.1` | 1.21.1 | 0.116.6+1.21.1 | 21 | String category | `ResourceLocation` |
-| `1.21` | 1.21 | 0.100.1+1.21 | 21 | String category | `ResourceLocation` |
-
-Key API differences:
-- **`KeyMapping.Category`** added in 1.21.9; older versions use a plain `String`.
-- **`Identifier`** replaced `ResourceLocation` in 1.21.11.
-- **26.1+**: unobfuscated, `net.fabricmc.fabric-loom`, `implementation` deps.
-- **1.21.x**: obfuscated, `net.fabricmc.fabric-loom-remap`, Mojang mappings (`loom.officialMojangMappings()`), `modImplementation` deps.
-- **26.2-snapshot+**: `InGameHudMixin` targets `Hud` (not `Gui`) — all `extract*` methods moved there. Method signatures now include `GuiGraphicsExtractor` (and `DeltaTracker` where applicable) as parameters before `CallbackInfo`. `@ModifyArg` target updated to `Hud;extractSpyglassOverlay`. Requires loom `1.16-SNAPSHOT` and Gradle `9.4.0+`. `fabric.mod.json` minecraft constraint uses range `>=26.2-alpha.1 <26.3-` (game reports itself as `26.2-alpha.X`).
+Each Minecraft version lives on its own git branch. The full version matrix (branch → Minecraft / Fabric API / Java / API style) and all per-version API differences live in **[docs/MULTI_VERSION.md](docs/MULTI_VERSION.md)** — keep that file in sync when porting to a new version. Latest: `26.3-snapshot` (26.3-snapshot-1, loom `1.17-SNAPSHOT`, Gradle `9.5.0`).
 
 ## Build Commands
 
@@ -38,8 +15,9 @@ Key API differences:
 ```
 
 JDK paths (Reva1v desktop):
-- **JDK 25** (`26.1` branch): `C:/Users/Reva1v/jdk25/jdk-25.0.2`
+- **JDK 25** (`26.x` branches): `C:/Program Files/Amazon Corretto/jdk25.0.2_10`
 - **JDK 21** (`1.21.x` branches): `C:/Users/Reva1v/AppData/Local/Programs/IntelliJ IDEA/jbr`
+- **JDK 17** (`1.20.1` branch): any JDK 17 install
 
 Testing: no automated tests — use `./gradlew runClient` and test in-game with a spyglass.
 
@@ -58,8 +36,7 @@ Mixin-based, client-only:
 - **`GameRendererMixin`** — Applies `fov * (10.0 / currentZoom)`. Target differs: `26.1` uses `Camera.calculateFov(float)` RETURN; `1.21.x` uses `GameRenderer.getFov(Camera, float, boolean)` RETURN. Note: Loom doesn't catch wrong target at compile time — only fails at runtime.
 - **`MouseHandlerMixin`** — Intercepts `MouseHandler.onScroll()`; while scoping cancels event and calls `SpyglassZoom.adjust(yDelta)`.
 - **`ClientTickMixin`** — Calls `SpyglassZoom.onTick()` each tick; handles K keybinding to open config screen.
-- **`KeyBindingMixin`** — Injects into `Options.<init>` to register the custom keybinding.
-- **`SpyglassKeyBinding`** — Registers "Open Settings" key (default: K) and keybinding category.
+- **`SpyglassKeyBinding`** — Defines the "Open Settings" key (default: K) and keybinding category. Registered at runtime via Fabric's `KeyMappingHelper.registerKeyMapping()` in `SpyglassOnlyHudMod.onInitializeClient()`. **Do NOT register keybindings via a raw mixin into `Options.<init>`** — that runs after `Options.load()`, so saved/unbound key values never apply and the key resets to default every launch (fixed in 1.2.1). The Fabric API registers before `Options` is constructed, and its `OptionsMixin.loadHook` (`@At("HEAD")` of `Options.load()`) merges modded keymappings before saved values are read.
 - **`SpyglassConfigScreen`** — Settings screen: HUD hide toggle + overlay scale slider.
 - **`SpyglassConfig`** — JSON config persistence.
 - **`ModMenuIntegration`** — Mod Menu hook.
@@ -74,8 +51,9 @@ Always bump `mod_version` in `gradle.properties`. Semver: patch = fixes, minor =
 
 1. Branch from the closest existing version.
 2. Update `gradle.properties`: `minecraft_version`, `loader_version`, `fabric_version`, `mod_version`.
-3. Update `build.gradle`: loom version if needed (loom `1.16-SNAPSHOT` requires Gradle `9.4.0+` → also update `gradle-wrapper.properties`).
-4. Update `fabric.mod.json`: `"minecraft"` constraint. For snapshot versions use a range (`>=26.2-alpha.1 <26.3-`) since the game may report a different version string at runtime than the Maven artifact name.
-5. Check `SpyglassKeyBinding.java` for API differences (see table).
+3. Update `build.gradle`: loom version if needed (loom `1.16-SNAPSHOT` requires Gradle `9.4.0+`; loom `1.17-SNAPSHOT` requires Gradle `9.5.0+` → also update `gradle-wrapper.properties`).
+4. Update `fabric.mod.json`: `"minecraft"` constraint. For snapshot versions use a range (e.g. `>=26.3-alpha.1 <26.4-`) since the game may report a different version string at runtime than the Maven artifact name.
+5. Check `SpyglassKeyBinding.java` for API differences (see [docs/MULTI_VERSION.md](docs/MULTI_VERSION.md)).
 6. Check `InGameHudMixin.java`: if `extract*` methods moved to a different class (e.g. `Gui` → `Hud` in 26.2), update `@Mixin` target and method parameter signatures.
 7. Build and fix compilation errors, then commit and push.
+8. Add the new branch's row to **[docs/MULTI_VERSION.md](docs/MULTI_VERSION.md)**.
