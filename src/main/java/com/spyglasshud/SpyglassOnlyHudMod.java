@@ -1,7 +1,7 @@
 package com.spyglasshud;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 
 public class SpyglassOnlyHudMod implements ClientModInitializer {
     public static final String MOD_ID = "spyglass-only-hud";
@@ -9,6 +9,6 @@ public class SpyglassOnlyHudMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         SpyglassConfig.load();
-        KeyMappingHelper.registerKeyMapping(SpyglassKeyBinding.OPEN_CONFIG);
+        KeyBindingHelper.registerKeyBinding(SpyglassKeyBinding.OPEN_CONFIG);
     }
 }
