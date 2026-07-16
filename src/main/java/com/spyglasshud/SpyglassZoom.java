@@ -18,6 +18,11 @@ public class SpyglassZoom {
         return prevZoom + (currentZoom - prevZoom) * partialTick;
     }
 
+    /** Current tick-level zoom factor (no partial-tick smoothing). Used by mouse handling. */
+    public static double getCurrent() {
+        return currentZoom;
+    }
+
     /**
      * Called by MouseHandlerMixin when the player scrolls while scoping.
      * delta > 0 = scroll up (zoom in), delta < 0 = scroll down (zoom out).
