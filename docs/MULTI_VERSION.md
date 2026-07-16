@@ -4,7 +4,7 @@ Spyglass Only HUD targets many Minecraft versions; **each version lives on its o
 
 | Branch | Minecraft | Fabric API | Java | `KeyMapping` category | ID class |
 |---|---|---|---|---|---|
-| `26.3-snapshot` | 26.3-snapshot-1 | 0.153.1+26.3 | 25 | `KeyMapping.Category.register()` | `Identifier` |
+| `26.3-snapshot` | 26.3-snapshot-4 | 0.155.1+26.3 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.2` | 26.2-pre-2 | 0.150.1+26.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.2-snapshot` | 26.2-snapshot-2 | 0.145.5+26.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
 | `26.1.2` | 26.1.2 | 0.145.4+26.1.2 | 25 | `KeyMapping.Category.register()` | `Identifier` |
@@ -32,3 +32,4 @@ Spyglass Only HUD targets many Minecraft versions; **each version lives on its o
 - **1.21.x**: obfuscated, `net.fabricmc.fabric-loom-remap`, Mojang mappings (`loom.officialMojangMappings()`), `modImplementation` deps.
 - **26.2-snapshot+**: `InGameHudMixin` targets `Hud` (not `Gui`) — all `extract*` methods moved there. Method signatures now include `GuiGraphicsExtractor` (and `DeltaTracker` where applicable) as parameters before `CallbackInfo`. `@ModifyArg` target updated to `Hud;extractSpyglassOverlay`. Requires loom `1.16-SNAPSHOT` and Gradle `9.4.0+`. `fabric.mod.json` minecraft constraint uses range `>=26.2-alpha.1 <26.3-` (game reports itself as `26.2-alpha.X`).
 - **26.3-snapshot+**: requires loom `1.17-SNAPSHOT` and Gradle `9.5.0+` (loom 1.17 rejects Gradle 9.4 — `No matching variant ... api-version 9.5.0`). `fabric.mod.json` minecraft constraint uses range `>=26.3-alpha.1 <26.4-` (game reports itself as `26.3-alpha.X`). No source changes were needed vs 26.2 — the `Hud`/`extract*` API is unchanged.
+- **26.3-snapshot-4**: `com.mojang.blaze3d.platform.InputConstants.Type` enum was renamed — the old `KEYSYM`/`SCANCODE` constants are gone, replaced by `KEYBOARD` and `MOUSE`. `SpyglassKeyBinding.java` must use `InputConstants.Type.KEYBOARD` (was `KEYSYM` on snapshot-1). This is a hard compile error (and a `NoSuchFieldError` at runtime for the old jar), so a single jar cannot span snapshot-1..3 **and** snapshot-4. The `26.3-snapshot` branch head therefore targets snapshot-4 with constraint `>=26.3-alpha.4 <26.4-`; the frozen snapshot-1..3 state lives at tag `mc/26.3-snapshot-1-3` (constraint `>=26.3-alpha.1`). Ship the `-26.3-snapshot-1.jar` for snapshot-1..3 and `-26.3-snapshot-4.jar` for snapshot-4+ as separate Modrinth files.

@@ -10,7 +10,7 @@ public class SpyglassKeyBinding {
 
     public static final KeyMapping OPEN_CONFIG = new KeyMapping(
             "spyglass-only-hud.key.openConfig",
-            InputConstants.Type.KEYSYM,
+            InputConstants.Type.KEYBOARD,
             InputConstants.KEY_K,
             CATEGORY
     );
