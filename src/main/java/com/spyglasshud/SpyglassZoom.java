@@ -18,14 +18,28 @@ public class SpyglassZoom {
         return prevZoom + (currentZoom - prevZoom) * partialTick;
     }
 
+    /** Current tick-level zoom factor (no partial-tick smoothing). Used by mouse handling. */
+    public static double getCurrent() {
+        return currentZoom;
+    }
+
     /**
      * Called by MouseHandlerMixin when the player scrolls while scoping.
      * delta > 0 = scroll up (zoom in), delta < 0 = scroll down (zoom out).
      * Moves the target; the displayed zoom eases toward it each tick.
      */
     public static void adjust(double delta) {
-        double step = SpyglassConfig.get().getZoomSensitivity();
-        targetZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, targetZoom + Math.signum(delta) * step));
+        // Multiplicative step: each scroll notch changes the zoom by a constant
+        // percentage, so it feels the same at ×2 and at ×45 (like a real camera).
+        // sensitivity 1..10 maps to +5%..+50% per notch.
+        // Math.clamp is Java 21+, so clamp with min/max here (this branch targets Java 17).
+        double factor = 1.0 + SpyglassConfig.get().getZoomSensitivity() * 0.05;
+        if (delta > 0) {
+            targetZoom *= factor;
+        } else if (delta < 0) {
+            targetZoom /= factor;
+        }
+        targetZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, targetZoom));
     }
 
     /**

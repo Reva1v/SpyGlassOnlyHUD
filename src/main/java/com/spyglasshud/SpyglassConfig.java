@@ -21,6 +21,7 @@ public class SpyglassConfig {
     private boolean zoomEnabled = true;
     private double zoomSensitivity = 3.0;
     private double zoomSmoothness = 0.3;
+    private boolean slowMouseWhileZooming = true;
 
     public static SpyglassConfig get() {
         if (instance == null) {
@@ -67,6 +68,14 @@ public class SpyglassConfig {
 
     public void setZoomSmoothness(double zoomSmoothness) {
         this.zoomSmoothness = zoomSmoothness;
+    }
+
+    public boolean isSlowMouseWhileZooming() {
+        return slowMouseWhileZooming;
+    }
+
+    public void setSlowMouseWhileZooming(boolean slowMouseWhileZooming) {
+        this.slowMouseWhileZooming = slowMouseWhileZooming;
     }
 
     public static void load() {

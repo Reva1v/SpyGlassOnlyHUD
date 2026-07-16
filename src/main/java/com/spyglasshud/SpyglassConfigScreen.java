@@ -9,7 +9,7 @@ public class SpyglassConfigScreen extends Screen {
 
     private static final Component TITLE = Component.translatable("spyglass-only-hud.config.title");
 
-    private static final int ROWS = 6;
+    private static final int ROWS = 7;
     private static final int ROW_HEIGHT = 24;
 
     private final Screen lastScreen;
@@ -18,6 +18,7 @@ public class SpyglassConfigScreen extends Screen {
     private boolean zoomEnabled;
     private double zoomSensitivity;
     private double zoomSmoothness; // interpolation factor, 0.05 (smoothest) .. 1.0 (instant)
+    private boolean slowMouseWhileZooming;
 
     public SpyglassConfigScreen(Screen parent) {
         super(TITLE);
@@ -28,6 +29,7 @@ public class SpyglassConfigScreen extends Screen {
         this.zoomEnabled = config.isZoomEnabled();
         this.zoomSensitivity = config.getZoomSensitivity();
         this.zoomSmoothness = config.getZoomSmoothness();
+        this.slowMouseWhileZooming = config.isSlowMouseWhileZooming();
     }
 
     private int rowTop(int i) {
@@ -57,9 +59,17 @@ public class SpyglassConfigScreen extends Screen {
         addStepperRow(4, () -> adjustSmoothness(0.05), () -> adjustSmoothness(-0.05));
 
         this.addRenderableWidget(Button.builder(
+                buildSlowMouseLabel(),
+                btn -> {
+                    this.slowMouseWhileZooming = !this.slowMouseWhileZooming;
+                    btn.setMessage(buildSlowMouseLabel());
+                }
+        ).bounds(this.width / 2 - 100, rowTop(5), 200, 20).build());
+
+        this.addRenderableWidget(Button.builder(
                 Component.translatable("gui.done"),
                 btn -> this.onClose()
-        ).bounds(this.width / 2 - 100, rowTop(5), 200, 20).build());
+        ).bounds(this.width / 2 - 100, rowTop(6), 200, 20).build());
     }
 
     private void addStepperRow(int row, Runnable onLeft, Runnable onRight) {
@@ -103,6 +113,12 @@ public class SpyglassConfigScreen extends Screen {
                 .append(Component.translatable(this.zoomEnabled ? "options.on" : "options.off"));
     }
 
+    private Component buildSlowMouseLabel() {
+        return Component.translatable("spyglass-only-hud.config.slowMouseWhileZooming")
+                .append(": ")
+                .append(Component.translatable(this.slowMouseWhileZooming ? "options.on" : "options.off"));
+    }
+
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(guiGraphics);
@@ -132,6 +148,7 @@ public class SpyglassConfigScreen extends Screen {
         config.setZoomEnabled(this.zoomEnabled);
         config.setZoomSensitivity(this.zoomSensitivity);
         config.setZoomSmoothness(this.zoomSmoothness);
+        config.setSlowMouseWhileZooming(this.slowMouseWhileZooming);
         SpyglassConfig.save();
         this.minecraft.setScreen(this.lastScreen);
     }
