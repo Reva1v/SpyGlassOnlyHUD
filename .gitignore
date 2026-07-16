@@ -30,3 +30,5 @@ remappedSrc/
 /CLAUDE.md
 /docs/
 /.wolf/
+/META-INF/
+/package-lock.json
