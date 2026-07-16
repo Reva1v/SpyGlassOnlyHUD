@@ -6,5 +6,6 @@
     "spyglass-only-hud.config.overlayScale": "Масштаб наложения",
     "spyglass-only-hud.config.zoomEnabled": "Зум колёсиком",
     "spyglass-only-hud.config.zoomSensitivity": "Чувствительность зума",
-    "spyglass-only-hud.config.zoomSmoothness": "Плавность зума"
+    "spyglass-only-hud.config.zoomSmoothness": "Плавность зума",
+    "spyglass-only-hud.config.slowMouseWhileZooming": "Замедлять мышь при зуме"
 }
