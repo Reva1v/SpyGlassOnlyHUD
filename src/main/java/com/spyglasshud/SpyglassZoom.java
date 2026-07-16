@@ -29,8 +29,16 @@ public class SpyglassZoom {
      * Moves the target; the displayed zoom eases toward it each tick.
      */
     public static void adjust(double delta) {
-        double step = SpyglassConfig.get().getZoomSensitivity();
-        targetZoom = Math.clamp(targetZoom + Math.signum(delta) * step, MIN_ZOOM, MAX_ZOOM);
+        // Multiplicative step: each scroll notch changes the zoom by a constant
+        // percentage, so it feels the same at ×2 and at ×45 (like a real camera).
+        // sensitivity 1..10 maps to +5%..+50% per notch.
+        double factor = 1.0 + SpyglassConfig.get().getZoomSensitivity() * 0.05;
+        if (delta > 0) {
+            targetZoom *= factor;
+        } else if (delta < 0) {
+            targetZoom /= factor;
+        }
+        targetZoom = Math.clamp(targetZoom, MIN_ZOOM, MAX_ZOOM);
     }
 
     /**
