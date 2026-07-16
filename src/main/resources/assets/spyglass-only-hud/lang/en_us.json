@@ -6,5 +6,6 @@
     "spyglass-only-hud.config.overlayScale": "Overlay Scale",
     "spyglass-only-hud.config.zoomEnabled": "Scroll Zoom",
     "spyglass-only-hud.config.zoomSensitivity": "Zoom Sensitivity",
-    "spyglass-only-hud.config.zoomSmoothness": "Zoom Smoothness"
+    "spyglass-only-hud.config.zoomSmoothness": "Zoom Smoothness",
+    "spyglass-only-hud.config.slowMouseWhileZooming": "Slow Mouse While Zooming"
 }
