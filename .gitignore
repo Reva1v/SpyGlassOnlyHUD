@@ -27,3 +27,6 @@ Thumbs.db
 # Fabric
 remappedSrc/
 /.wolf/
+.claude/
+/CLAUDE.md
+/docs/
