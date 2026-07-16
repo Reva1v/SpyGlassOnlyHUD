@@ -16,6 +16,7 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
     private OptionInstance<Boolean> zoomEnabledOption;
     private OptionInstance<Double> zoomSensitivityOption;
     private OptionInstance<Double> zoomSmoothnessOption;
+    private OptionInstance<Boolean> slowMouseOption;
 
     public SpyglassConfigScreen(Screen parent) {
         super(parent, Minecraft.getInstance().options, TITLE);
@@ -75,11 +76,17 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
                 value -> {}
         );
 
+        slowMouseOption = OptionInstance.createBoolean(
+                "spyglass-only-hud.config.slowMouseWhileZooming",
+                config.isSlowMouseWhileZooming()
+        );
+
         this.list.addBig(hideHudOption);
         this.list.addBig(overlayScaleOption);
         this.list.addBig(zoomEnabledOption);
         this.list.addBig(zoomSensitivityOption);
         this.list.addBig(zoomSmoothnessOption);
+        this.list.addBig(slowMouseOption);
     }
 
     @Override
@@ -90,6 +97,7 @@ public class SpyglassConfigScreen extends OptionsSubScreen {
         config.setZoomEnabled(zoomEnabledOption.get());
         config.setZoomSensitivity(1.0 + zoomSensitivityOption.get() * 9.0);
         config.setZoomSmoothness(1.0 - zoomSmoothnessOption.get() * 0.95);
+        config.setSlowMouseWhileZooming(slowMouseOption.get());
         SpyglassConfig.save();
         super.removed();
     }
