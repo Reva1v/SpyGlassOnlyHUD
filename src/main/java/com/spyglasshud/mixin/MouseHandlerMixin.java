@@ -29,7 +29,7 @@ public abstract class MouseHandlerMixin {
     @Inject(method = "turnPlayer", at = @At("HEAD"))
     private void slowMouseWhileZooming(double partialTick, CallbackInfo ci) {
         Minecraft client = Minecraft.getInstance();
-        if (client.player != null && client.player.isScoping() && client.gui.screen() == null
+        if (client.player != null && client.player.isScoping() && client.screen == null
                 && SpyglassConfig.get().isZoomEnabled() && SpyglassConfig.get().isSlowMouseWhileZooming()) {
             double factor = Math.min(1.0, SpyglassZoom.DEFAULT_ZOOM / SpyglassZoom.getCurrent());
             setAccumulatedDX(getAccumulatedDX() * factor);
