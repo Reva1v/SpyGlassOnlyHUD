@@ -36,3 +36,5 @@ remappedSrc/
 .claude/
 /CLAUDE.md
 /docs/
+/META-INF/
+/package-lock.json
