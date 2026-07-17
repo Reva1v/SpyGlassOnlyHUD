@@ -3,5 +3,9 @@
     "spyglass-only-hud.key.openConfig": "Відкрити налаштування",
     "spyglass-only-hud.config.title": "Налаштування Spyglass Only HUD",
     "spyglass-only-hud.config.hideHud": "Приховувати HUD при використанні підзорної труби",
-    "spyglass-only-hud.config.overlayScale": "Масштаб накладення"
+    "spyglass-only-hud.config.overlayScale": "Масштаб накладення",
+    "spyglass-only-hud.config.zoomEnabled": "Зум колесом",
+    "spyglass-only-hud.config.zoomSensitivity": "Чутливість зуму",
+    "spyglass-only-hud.config.zoomSmoothness": "Плавність зуму",
+    "spyglass-only-hud.config.slowMouseWhileZooming": "Уповільнювати мишу при збільшенні"
 }

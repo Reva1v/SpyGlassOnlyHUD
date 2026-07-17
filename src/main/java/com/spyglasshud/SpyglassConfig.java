@@ -18,6 +18,10 @@ public class SpyglassConfig {
 
     private boolean hideHud = true;
     private double overlayScale = 0.90;
+    private boolean zoomEnabled = true;
+    private double zoomSensitivity = 3.0;
+    private double zoomSmoothness = 0.3;
+    private boolean slowMouseWhileZooming = true;
 
     public static SpyglassConfig get() {
         if (instance == null) {
@@ -40,6 +44,38 @@ public class SpyglassConfig {
 
     public void setOverlayScale(double overlayScale) {
         this.overlayScale = overlayScale;
+    }
+
+    public boolean isZoomEnabled() {
+        return zoomEnabled;
+    }
+
+    public void setZoomEnabled(boolean zoomEnabled) {
+        this.zoomEnabled = zoomEnabled;
+    }
+
+    public double getZoomSensitivity() {
+        return zoomSensitivity;
+    }
+
+    public void setZoomSensitivity(double zoomSensitivity) {
+        this.zoomSensitivity = zoomSensitivity;
+    }
+
+    public double getZoomSmoothness() {
+        return zoomSmoothness;
+    }
+
+    public void setZoomSmoothness(double zoomSmoothness) {
+        this.zoomSmoothness = zoomSmoothness;
+    }
+
+    public boolean isSlowMouseWhileZooming() {
+        return slowMouseWhileZooming;
+    }
+
+    public void setSlowMouseWhileZooming(boolean slowMouseWhileZooming) {
+        this.slowMouseWhileZooming = slowMouseWhileZooming;
     }
 
     public static void load() {

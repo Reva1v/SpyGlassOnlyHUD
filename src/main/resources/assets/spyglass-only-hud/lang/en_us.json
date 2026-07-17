@@ -3,5 +3,9 @@
     "spyglass-only-hud.key.openConfig": "Open Settings",
     "spyglass-only-hud.config.title": "Spyglass Only HUD Settings",
     "spyglass-only-hud.config.hideHud": "Hide HUD When Scoping",
-    "spyglass-only-hud.config.overlayScale": "Overlay Scale"
+    "spyglass-only-hud.config.overlayScale": "Overlay Scale",
+    "spyglass-only-hud.config.zoomEnabled": "Scroll Zoom",
+    "spyglass-only-hud.config.zoomSensitivity": "Zoom Sensitivity",
+    "spyglass-only-hud.config.zoomSmoothness": "Zoom Smoothness",
+    "spyglass-only-hud.config.slowMouseWhileZooming": "Slow Mouse While Zooming"
 }
