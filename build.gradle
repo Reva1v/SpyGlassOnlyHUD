@@ -1,3 +1,5 @@
+import com.modrinth.minotaur.dependencies.ModDependency
+
 plugins {
     id "net.fabricmc.fabric-loom" version "1.16-SNAPSHOT"
     id "java"
@@ -51,12 +53,20 @@ tasks.withType(AbstractArchiveTask).configureEach {
 }
 
 modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
+    token = project.findProperty("modrinthToken") ?: System.getenv("MODRINTH_TOKEN")
     projectId = project.modrinth_project_id
     versionNumber = project.mod_version
     versionName = "Spyglass Only HUD ${project.mod_version}"
     versionType = "release"
     uploadFile = file("build/libs/${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}.jar")
-    gameVersions = [project.minecraft_version]
+    gameVersions = ((project.findProperty("modrinth_game_versions") ?: project.minecraft_version) as String).split(",").collect { it.trim() }
     loaders = ["fabric"]
+    // Fabric API (P7dR8mSH), any version, required.
+    // Set explicitly rather than via the `dependencies {}` DSL: inside this block Gradle
+    // resolves `dependencies` to project.dependencies, so the DSL silently does nothing.
+    dependencies = [new ModDependency("P7dR8mSH", "required")]
+    changelog = """## 1.3.0
+- **Added:** mouse sensitivity now scales down with zoom level, so aiming stays controllable at high zoom (toggle in settings)
+- **Changed:** zoom step is now multiplicative — zoom speed feels uniform across the whole range
+- **Fixed:** settings keybind now persists across launches (unbinding/rebinding no longer resets to K)"""
 }
