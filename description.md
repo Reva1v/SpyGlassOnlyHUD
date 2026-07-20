@@ -17,14 +17,11 @@ Everything reappears instantly when you stop using the spyglass.
 
 - **Toggle on/off** — Disable the mod without removing it
 - **Overlay scale** — Adjust the size of the spyglass overlay to your liking
+- **Scroll zoom** — Scroll the mouse wheel while using a spyglass to zoom in/out (×1–×50). Resets to default when you put the spyglass away
+- **Smooth & tunable zoom** — Adjust zoom sensitivity and smoothness in the settings
+- **Steady aim** — Mouse sensitivity scales down as you zoom in, so aiming stays controllable even at ×50 (can be turned off)
 - **In-game settings** — Press **K** (configurable) to open the settings screen, or use Mod Menu
 - **Translations** — English, Russian, Ukrainian
-
-## Requirements
-
-- [Fabric Loader](https://fabricmc.net/) >= 0.16.0
-- [Fabric API](https://modrinth.com/mod/fabric-api)
-- Minecraft 26.1-snapshot-6
 
 ## FAQ
 
@@ -36,3 +33,8 @@ No, it's fully client-side. You can use it on any server without issues.
 
 **Can I change the keybinding?**
 Yes. Go to Options > Controls > Keybinds and find the "Spyglass Only HUD" category.
+
+**Can I change the zoom level?**
+Yes. Scroll the mouse wheel while using a spyglass to zoom in or out. The zoom resets automatically when you lower the spyglass.
+
+### Created for GF ❤️
