@@ -14,4 +14,7 @@ public class SpyglassKeyBinding {
             InputConstants.KEY_K,
             CATEGORY
     );
+
+    private SpyglassKeyBinding() {
+    }
 }
