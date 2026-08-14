@@ -10,6 +10,9 @@ public class SpyglassZoom {
     private static volatile double prevZoom = DEFAULT_ZOOM;
     private static volatile boolean wasScoping = false;
 
+    private SpyglassZoom() {
+    }
+
     /**
      * Per-frame smoothed zoom: interpolates between the previous and current
      * tick values by partialTick so the zoom is smooth above 20 FPS.
