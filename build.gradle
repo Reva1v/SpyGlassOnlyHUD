@@ -1,7 +1,7 @@
 import com.modrinth.minotaur.dependencies.ModDependency
 
 plugins {
-    id "net.fabricmc.fabric-loom" version "1.17-SNAPSHOT"
+    id "net.fabricmc.fabric-loom" version "1.18-SNAPSHOT"
     id "java"
     id "com.modrinth.minotaur" version "2.+"
 }
