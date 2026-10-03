@@ -13,6 +13,12 @@ base {
     archivesName = project.archives_base_name
 }
 
+// Minecraft versions this jar is published for (falls back to the build target).
+def gameVersionList = ((project.findProperty("modrinth_game_versions") ?: project.minecraft_version) as String).split(",").collect { it.trim() }
+// Jar suffix: the single game version, or "<first>+" when one jar covers several.
+// Set jar_mc_label to override it, e.g. a closed range on a frozen branch.
+def jarMcLabel = project.findProperty("jar_mc_label") ?: (gameVersionList.size() == 1 ? gameVersionList[0] : "${gameVersionList[0]}+")
+
 repositories {
     mavenCentral()
 }
@@ -50,7 +56,7 @@ jar {
 }
 
 remapJar {
-    archiveVersion = "${project.mod_version}-${project.minecraft_version}"
+    archiveVersion = "${project.mod_version}-${jarMcLabel}"
 }
 
 modrinth {
@@ -59,8 +65,8 @@ modrinth {
     versionNumber = project.mod_version
     versionName = "Spyglass Only HUD ${project.mod_version}"
     versionType = "release"
-    uploadFile = file("build/libs/${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}.jar")
-    gameVersions = ((project.findProperty("modrinth_game_versions") ?: project.minecraft_version) as String).split(",").collect { it.trim() }
+    uploadFile = file("build/libs/${project.archives_base_name}-${project.mod_version}-${jarMcLabel}.jar")
+    gameVersions = gameVersionList
     loaders = ["fabric"]
     // Fabric API (P7dR8mSH), any version, required.
     // Set explicitly rather than via the `dependencies {}` DSL: inside this block Gradle
